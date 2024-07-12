@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"time"
 
 	test1pb "github.com/martin-lin-cw/test1/gen/proto/test1/v1"
 	"google.golang.org/grpc"
@@ -36,5 +37,7 @@ func main() {
 		panic(err)
 	}
 
-	server.Serve(ln)
+	go server.Serve(ln)
+
+	time.Sleep(time.Second * 3)
 }
